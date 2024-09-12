@@ -1,6 +1,6 @@
 package br.com.interfaces;
 
-public interface IUsuario {
+public interface Usuario {
     String getNome();
     String getEmail();
     void setNome(String nome);

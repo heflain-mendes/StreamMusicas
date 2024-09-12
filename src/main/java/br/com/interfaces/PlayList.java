@@ -2,14 +2,14 @@ package br.com.interfaces;
 
 import java.util.List;
 
-public interface IPlayList {
+public interface PlayList {
     String getNome();
-    List<IMusica> getMusicas();
-    void adicionarMusica(IMusica musica);
-    void removerMusica(IMusica musica);
+    List<Musica> getMusicas();
+    void adicionarMusica(Musica musica);
+    void removerMusica(Musica musica);
     boolean isPublica();
     void setPublica(boolean publica);
-    void adicionarColaborador(IUsuario usuario);
-    List<IUsuario> getColaboradores();
+    void adicionarColaborador(Usuario usuario);
+    List<Usuario> getColaboradores();
 
 }

@@ -1,11 +1,10 @@
 package br.com.model;
 
-import br.com.interfaces.IMusica;
-
-public class Musica implements IMusica {
+public class Musica implements br.com.interfaces.Musica {
     private String titulo;
     private String artista;
     private String genero;
+    private  int qtdVezesReproduzida;
 
     public Musica(String titulo, String artista, String genero) {
         this.titulo = titulo;
@@ -26,5 +25,15 @@ public class Musica implements IMusica {
     @Override
     public String getGenero() {
         return this.genero;
+    }
+
+    @Override
+    public void incrementaContagemReproducao() {
+        this.qtdVezesReproduzida++;
+    }
+
+    @Override
+    public int getQtdVezesReproduzidas() {
+        return this.qtdVezesReproduzida;
     }
 }
