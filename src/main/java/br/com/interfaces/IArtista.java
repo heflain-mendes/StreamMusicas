@@ -3,9 +3,9 @@ package br.com.interfaces;
 import java.util.List;
 import java.util.Optional;
 
-public interface Artista {
+public interface IArtista {
     public String getNome();
     public String getBiografia();
-    public List<Musica> getDiscografia();
-    Optional<List<Musica>> getMusicasMaisTocadas();
+    public List<IMusica> getDiscografia();
+    Optional<List<IMusica>> getMusicasMaisTocadas();
 }
