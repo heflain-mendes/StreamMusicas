@@ -6,11 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IArtistaService{
-    Optional<List<IMusica>> getMusicasMaisTocadas(String artista,
-                                                  IReproducaoService reproducaoService);
+    Optional<List<IMusica>> getMusicasMaisTocadas(String artista);
     Optional<List<IMusica>> getMusica(String artista);
     Optional<String> getBiografia(String artista);
-    void atualizarEstatisticasReproducao(String artista,
-                                         IReproducaoService reproducaoService);
-
+    void atualizarEstatisticasReproducao(String artista, IReproducaoService reproducaoService);
 }
