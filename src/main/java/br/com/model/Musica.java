@@ -1,6 +1,8 @@
 package br.com.model;
 
-public class Musica implements br.com.interfaces.Musica {
+import br.com.interfaces.IMusica;
+
+public class Musica implements IMusica {
     private String titulo;
     private String artista;
     private String genero;

@@ -1,17 +1,18 @@
 package br.com.model;
 
-import br.com.interfaces.Musica;
+import br.com.interfaces.IArtista;
+import br.com.interfaces.IMusica;
 
 import java.util.List;
 import java.util.Optional;
 
-public class Artista implements br.com.interfaces.Artista {
+public class Artista implements IArtista {
     private final String nome;
     private final String biografia;
-    private final List<Musica> discografia;
-    private final Optional<List<Musica>> musicasMaisTocadas;
+    private final List<IMusica> discografia;
+    private final Optional<List<IMusica>> musicasMaisTocadas;
 
-    public Artista(String nome, String biografia, List<Musica> discografia, Optional<List<Musica>> musicasMaisTocadas) {
+    public Artista(String nome, String biografia, List<IMusica> discografia, Optional<List<IMusica>> musicasMaisTocadas) {
         this.nome = nome;
         this.biografia = biografia;
         this.discografia = discografia;
@@ -29,12 +30,12 @@ public class Artista implements br.com.interfaces.Artista {
     }
 
     @Override
-    public List<Musica> getDiscografia() {
+    public List<IMusica> getDiscografia() {
         return this.discografia;
     }
 
     @Override
-    public Optional<List<Musica>> getMusicasMaisTocadas() {
+    public Optional<List<IMusica>> getMusicasMaisTocadas() {
         return this.musicasMaisTocadas;
     }
 }
