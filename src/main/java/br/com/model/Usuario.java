@@ -1,6 +1,6 @@
 package br.com.model;
 
-import br.com.interfaces.IUsuario;
+import br.com.interfaces.model.IUsuario;
 
 public class Usuario implements IUsuario {
     private String nome;

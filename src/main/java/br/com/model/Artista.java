@@ -1,7 +1,7 @@
 package br.com.model;
 
-import br.com.interfaces.IArtista;
-import br.com.interfaces.IMusica;
+import br.com.interfaces.model.IArtista;
+import br.com.interfaces.model.IMusica;
 
 import java.util.List;
 import java.util.Optional;

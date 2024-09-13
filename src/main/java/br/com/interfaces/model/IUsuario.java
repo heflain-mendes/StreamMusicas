@@ -1,4 +1,4 @@
-package br.com.interfaces;
+package br.com.interfaces.model;
 
 public interface IUsuario {
     String getNome();
