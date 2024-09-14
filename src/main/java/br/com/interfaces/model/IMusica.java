@@ -6,4 +6,5 @@ public interface IMusica {
     String getGenero();
     void incrementaContagemReproducao();
     int getQtdVezesReproduzidas();
+    double getDuracao();
 }

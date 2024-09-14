@@ -7,11 +7,13 @@ public class Musica implements IMusica {
     private String artista;
     private String genero;
     private  int qtdVezesReproduzida;
+    private double duracao;
 
-    public Musica(String titulo, String artista, String genero) {
+    public Musica(String titulo, String artista, String genero, double duracao) {
         this.titulo = titulo;
         this.artista = artista;
         this.genero = genero;
+        this.duracao = duracao;
     }
 
     @Override
@@ -37,5 +39,10 @@ public class Musica implements IMusica {
     @Override
     public int getQtdVezesReproduzidas() {
         return this.qtdVezesReproduzida;
+    }
+
+    @Override
+    public double getDuracao() {
+        return this.duracao;
     }
 }
