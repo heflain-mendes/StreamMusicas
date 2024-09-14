@@ -1,14 +1,14 @@
 package br.com.interfaces.services;
 
 import br.com.interfaces.model.IMusica;
-import br.com.interfaces.model.IPlayList;
+import br.com.interfaces.model.IPlaylist;
 import br.com.interfaces.model.IUsuario;
 
 import java.util.List;
 
 public interface IReproducaoService {
     void reproduzirMusica(IMusica musica, IUsuario usuario);
-    void reproduzirPlayList(IPlayList playlist, IUsuario usuario, IArtistaService artistaService);
+    void reproduzirPlayList(IPlaylist playlist, IUsuario usuario, IArtistaService artistaService);
     void pausarReproducao(IUsuario usuario);
     void retomarReproducao(IUsuario usuario);
     void pararReproducao(IUsuario usuario);

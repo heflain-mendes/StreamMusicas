@@ -15,7 +15,7 @@ public class MusicaRepository implements IMusicaRepository {
     private List<IMusica> musicas;
 
     MusicaRepository() {
-        List<IMusica> musicas = new ArrayList<>();
+        this.musicas = new ArrayList<>();
 
         musicas.add(new Musica("How You Like That", "BlackPink", "KPOP", 3.0));
         musicas.add(new Musica("What is Love", "Twice", "KPOP", 3.3));
@@ -74,6 +74,7 @@ public class MusicaRepository implements IMusicaRepository {
             .filter(item -> item.getArtista().equalsIgnoreCase(nomeArtista))
             .sorted(Comparator.comparingInt(IMusica::getQtdVezesReproduzidas).reversed())
             .limit(qtd)
+            .map(musica -> new Musica(musica.getTitulo(), musica.getArtista(), musica.getGenero(), musica.getDuracao()))
             .collect(Collectors.toList()));
     }
 
@@ -83,6 +84,7 @@ public class MusicaRepository implements IMusicaRepository {
             this.musicas
                 .stream()
                 .filter(item -> item.getArtista().equalsIgnoreCase(nomeArtista))
+                .map(musica -> new Musica(musica.getTitulo(), musica.getArtista(), musica.getGenero(), musica.getDuracao()))
                 .collect(Collectors.toList())
         );
     }

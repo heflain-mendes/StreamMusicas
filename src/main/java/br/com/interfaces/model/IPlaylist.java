@@ -2,7 +2,7 @@ package br.com.interfaces.model;
 
 import java.util.List;
 
-public interface IPlayList {
+public interface IPlaylist {
     String getNome();
     List<IMusica> getMusicas();
     void adicionarMusica(IMusica musica);
