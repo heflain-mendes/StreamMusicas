@@ -88,4 +88,18 @@ public class MusicaRepository implements IMusicaRepository {
                 .collect(Collectors.toList())
         );
     }
+
+    @Override
+    public void atualizarEstatisticasReproducao(IMusica musica) {
+        var musicaRecuperada = this.musicas
+                .stream()
+                .filter(item -> item.getTitulo().equalsIgnoreCase(musica.getTitulo()))
+                .findFirst();
+
+        if(musicaRecuperada.isPresent()){
+            musicaRecuperada.get().incrementaContagemReproducao();
+        }
+    }
+
+
 }
