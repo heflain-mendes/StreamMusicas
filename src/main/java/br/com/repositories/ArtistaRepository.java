@@ -10,10 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class ArtistaRepository implements IArtistaRepository {
-    private static IArtistaRepository artistaRepository;
     private List<IArtista> artistas;
 
-    private ArtistaRepository() {
+    public ArtistaRepository() {
         this.artistas = new ArrayList<>();
         artistas.add(new Artista("BlackPink", "Biografia de BlackPink"));
         artistas.add(new Artista("Twice", "Biografia de Twice"));
@@ -55,14 +54,6 @@ public class ArtistaRepository implements IArtistaRepository {
         artistas.add(new Artista("A-ha", "Biografia de A-ha"));
         artistas.add(new Artista("Leonard Cohen", "Biografia de Leonard Cohen"));
         artistas.add(new Artista("Tears for Fears", "Biografia de Tears for Fears"));
-    }
-
-    public static IArtistaRepository getArtistaRepository(){
-        if(ArtistaRepository.artistaRepository == null ){
-            ArtistaRepository.artistaRepository = new ArtistaRepository();
-        }
-
-        return ArtistaRepository.artistaRepository;
     }
 
     @Override

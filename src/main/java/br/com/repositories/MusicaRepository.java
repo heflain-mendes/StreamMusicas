@@ -11,7 +11,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class MusicaRepository implements IMusicaRepository {
-    private static IMusicaRepository musicaRepository;
     private List<IMusica> musicas;
 
     MusicaRepository() {
@@ -57,14 +56,6 @@ public class MusicaRepository implements IMusicaRepository {
         musicas.add(new Musica("Take On Me", "A-ha", "Synthpop", 3.4));
         musicas.add(new Musica("Hallelujah", "Leonard Cohen", "Folk", 4.3));
         musicas.add(new Musica("Everybody Wants to Rule the World", "Tears for Fears", "New Wave", 4.1));
-    }
-
-    public static IMusicaRepository getMusicaRepository(){
-        if(MusicaRepository.musicaRepository == null){
-            MusicaRepository.musicaRepository = new MusicaRepository();
-        }
-
-        return  MusicaRepository.musicaRepository;
     }
 
     @Override
