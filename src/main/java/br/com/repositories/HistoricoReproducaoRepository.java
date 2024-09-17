@@ -12,50 +12,33 @@ import java.util.Optional;
 
 public class HistoricoReproducaoRepository implements IHistoricoReproducaoRepository {
 
-    private static IHistoricoReproducaoRepository historicoReproducaoRepository;
-    private final List<IHistoricoReproducao> historicosReproducao;
+	private static IHistoricoReproducaoRepository historicoReproducaoRepository;
+	private final List<IHistoricoReproducao> historicosReproducao;
 
-    private HistoricoReproducaoRepository() {
-        this.historicosReproducao = new ArrayList<>();
-    }
+	private HistoricoReproducaoRepository() {
+		this.historicosReproducao = new ArrayList<>();
+	}
 
-    public static IHistoricoReproducaoRepository getHistoricoReproducaoRepository() {
-        if (HistoricoReproducaoRepository.historicoReproducaoRepository == null) {
-            HistoricoReproducaoRepository.historicoReproducaoRepository = new HistoricoReproducaoRepository();
-        }
-        return HistoricoReproducaoRepository.historicoReproducaoRepository;
-    }
+	public static IHistoricoReproducaoRepository getHistoricoReproducaoRepository() {
+		if( HistoricoReproducaoRepository.historicoReproducaoRepository == null ) {
+			HistoricoReproducaoRepository.historicoReproducaoRepository = new HistoricoReproducaoRepository();
+		}
+		return HistoricoReproducaoRepository.historicoReproducaoRepository;
+	}
 
-    @Override
-    public void registrarReproducao(IMusica musica, IUsuario usuario) {
-        historicosReproducao
-            .stream()
-            .filter(reproducao -> reproducao.mesmaMusicaMesmoUsuario(musica, usuario))
-            .findFirst()
-            .ifPresentOrElse(
-                IHistoricoReproducao::registrarReproducao,
-                () -> historicosReproducao.add(
-                        new HistoricoReproducao(musica, usuario)
-                )
-            );
-    }
+	@Override
+	public void registrarReproducao( IMusica musica, IUsuario usuario ) {
+		historicosReproducao.stream().filter( reproducao -> reproducao.mesmaMusicaMesmoUsuario( musica, usuario ) ).findFirst().ifPresentOrElse( IHistoricoReproducao::registrarReproducao, () -> historicosReproducao.add( new HistoricoReproducao( musica, usuario ) ) );
+	}
 
-    @Override
-    public List<IHistoricoReproducao> getAll() {
-        return this.historicosReproducao;
-    }
+	@Override
+	public List<IHistoricoReproducao> getAll() {
+		return this.historicosReproducao;
+	}
 
-    @Override
-    public Optional<List<IHistoricoReproducao>> findAllByUsuario(IUsuario usuario) {
-        return Optional
-            .of(
-                this.historicosReproducao
-                    .stream()
-                    .filter(
-                            historicoReproducao -> historicoReproducao.mesmoUsuario(usuario)
-                    )
-                    .toList()
-            );
-    }
+	@Override
+	public Optional<List<IHistoricoReproducao>> findAllByUsuario( IUsuario usuario ) {
+		return Optional.of( this.historicosReproducao.stream().filter( historicoReproducao -> historicoReproducao.mesmoUsuario( usuario ) ).toList() );
+	}
 
 }
