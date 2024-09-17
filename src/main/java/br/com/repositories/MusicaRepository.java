@@ -89,6 +89,18 @@ public class MusicaRepository implements IMusicaRepository {
 		);
 	}
 
+    @Override
+    public void atualizarEstatisticasReproducao(IMusica musica) {
+        var musicaRecuperada = this.musicas
+                .stream()
+                .filter(item -> item.getTitulo().equalsIgnoreCase(musica.getTitulo()))
+                .findFirst();
+
+        if(musicaRecuperada.isPresent()){
+            musicaRecuperada.get().incrementaContagemReproducao();
+        }
+    }
+
 	@Override
 	public List<IMusica> getAll() {
 		return this.musicas;
@@ -103,4 +115,5 @@ public class MusicaRepository implements IMusicaRepository {
 	public Optional<List<IMusica>> findMaisTocadasByGenero( String genero, int qtd ) {
 		return Optional.of( this.musicas.stream().filter( musica -> musica.getGenero().equalsIgnoreCase( genero ) ).sorted( Comparator.comparingInt( IMusica::getQtdVezesReproduzidas ).reversed() ).limit( qtd ).toList() );
 	}
+
 }

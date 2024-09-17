@@ -1,5 +1,6 @@
 package br.com.repositories;
 
+import br.com.interfaces.model.IHistoricoReproducao;
 import br.com.interfaces.model.IMusica;
 import br.com.interfaces.model.IUsuario;
 import br.com.interfaces.repository.IHistoricoReproducaoRepository;
@@ -12,7 +13,7 @@ import java.util.Optional;
 public class HistoricoReproducaoRepository implements IHistoricoReproducaoRepository {
 
 	private static IHistoricoReproducaoRepository historicoReproducaoRepository;
-	private final List<HistoricoReproducao> historicosReproducao;
+	private final List<IHistoricoReproducao> historicosReproducao;
 
 	private HistoricoReproducaoRepository() {
 		this.historicosReproducao = new ArrayList<>();
@@ -27,16 +28,16 @@ public class HistoricoReproducaoRepository implements IHistoricoReproducaoReposi
 
 	@Override
 	public void registrarReproducao( IMusica musica, IUsuario usuario ) {
-		historicosReproducao.stream().filter( reproducao -> reproducao.mesmaMusicaMesmoUsuario( musica, usuario ) ).findFirst().ifPresentOrElse( HistoricoReproducao::registrarReproducao, () -> historicosReproducao.add( new HistoricoReproducao( musica, usuario ) ) );
+		historicosReproducao.stream().filter( reproducao -> reproducao.mesmaMusicaMesmoUsuario( musica, usuario ) ).findFirst().ifPresentOrElse( IHistoricoReproducao::registrarReproducao, () -> historicosReproducao.add( new HistoricoReproducao( musica, usuario ) ) );
 	}
 
 	@Override
-	public List<HistoricoReproducao> getAll() {
+	public List<IHistoricoReproducao> getAll() {
 		return this.historicosReproducao;
 	}
 
 	@Override
-	public Optional<List<HistoricoReproducao>> findAllByUsuario( IUsuario usuario ) {
+	public Optional<List<IHistoricoReproducao>> findAllByUsuario( IUsuario usuario ) {
 		return Optional.of( this.historicosReproducao.stream().filter( historicoReproducao -> historicoReproducao.mesmoUsuario( usuario ) ).toList() );
 	}
 
