@@ -77,7 +77,7 @@ public class MusicaRepository implements IMusicaRepository {
 				.map( musica -> new Musica( musica.getTitulo(), musica.getArtista(), musica.getGenero(), musica.getDuracao() ) )
 				.collect( Collectors.toList() );
 
-		return musicas.isEmpty() ? Optional.of(musicas) : Optional.empty();
+		return musicas.isEmpty() ? Optional.empty() : Optional.of(musicas);
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class MusicaRepository implements IMusicaRepository {
 						.map( musica -> new Musica( musica.getTitulo(), musica.getArtista(), musica.getGenero(), musica.getDuracao() ) )
 						.collect( Collectors.toList());
 
-		return musicas.isEmpty() ? Optional.of(musicas) : Optional.empty();
+		return musicas.isEmpty() ? Optional.empty() : Optional.of(musicas);
 	}
 
     @Override
