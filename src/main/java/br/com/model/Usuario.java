@@ -3,31 +3,27 @@ package br.com.model;
 import br.com.interfaces.model.IUsuario;
 
 public class Usuario implements IUsuario {
-    private String nome;
-    private String email;
 
-    public Usuario(String nome, String email) {
-        this.nome = nome;
-        this.email = email;
-    }
+	private final String nome;
+	private String email;
 
-    @Override
-    public String getNome() {
-        return this.nome;
-    }
+	public Usuario( String nome, String email ) {
+		this.nome = nome;
+		this.email = email;
+	}
 
-    @Override
-    public String getEmail() {
-        return this.email;
-    }
+	@Override
+	public String getNome() {
+		return this.nome;
+	}
 
-    @Override
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	@Override
+	public String getEmail() {
+		return this.email;
+	}
 
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	@Override
+	public void setEmail( String email ) {
+		this.email = email;
+	}
 }
