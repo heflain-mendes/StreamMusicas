@@ -69,24 +69,26 @@ public class MusicaRepository implements IMusicaRepository {
 
 	@Override
 	public Optional<List<IMusica>> getMusicasMaisTocadas( String nomeArtista, int qtd ) {
-		return Optional.of( this.musicas
+		 List<IMusica> musicas = this.musicas
 				.stream()
 				.filter( item -> item.getArtista().equalsIgnoreCase( nomeArtista ) )
 				.sorted( Comparator.comparingInt( IMusica::getQtdVezesReproduzidas ).reversed() )
 				.limit( qtd )
 				.map( musica -> new Musica( musica.getTitulo(), musica.getArtista(), musica.getGenero(), musica.getDuracao() ) )
-				.collect( Collectors.toList() ) );
+				.collect( Collectors.toList() );
+
+		return musicas.isEmpty() ? Optional.of(musicas) : Optional.empty();
 	}
 
 	@Override
 	public Optional<List<IMusica>> getMusicas( String nomeArtista ) {
-		return Optional.of(
-				this.musicas
+		List<IMusica> musicas =this.musicas
 						.stream()
 						.filter( item -> item.getArtista().equalsIgnoreCase( nomeArtista ) )
 						.map( musica -> new Musica( musica.getTitulo(), musica.getArtista(), musica.getGenero(), musica.getDuracao() ) )
-						.collect( Collectors.toList() )
-		);
+						.collect( Collectors.toList());
+
+		return musicas.isEmpty() ? Optional.of(musicas) : Optional.empty();
 	}
 
     @Override
