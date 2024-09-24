@@ -12,29 +12,41 @@ import br.com.interfaces.services.IReproducaoService;
 import br.com.model.Playlist;
 
 public class PlayListService implements IPlayListService {
-
-    public Optional<IPlaylist> criarPlayList(String nome, IUsuario criador){
-
-		IPlaylist playlist = new Playlist(nome);
-		playlist.adicionarColaborador(criador);
-
-		return Optional.of(playlist);
-	}
-
-    public void compartilharPlayList(IPlaylist playlist, IUsuario usuario){
-
-	}
     
-	public void convidarColaborador(IPlaylist playlist, IUsuario usuario){
+    
+    IRecomendacaoService recomendacaoService;
 
-	}
+    @Override
+    public Optional<IPlaylist> criarPlayList(String nome, IUsuario criador) {
 
-    public List<IMusica> recomendarMusicasParaPlayList(IPlaylist playlist, IRecomendacaoService recomendacaoService){
-		return null;
-	}
+        IPlaylist playlist = new Playlist(nome);
+        playlist.adicionarColaborador(criador);
 
-    public void iniciarReproducaoPlayList(IPlaylist playlist, IUsuario usuario, IReproducaoService reproducaoService){
+        return Optional.of(playlist);
+    }
 
-	}
+    @Override
+    public void compartilharPlayList(IPlaylist playlist, IUsuario usuario) {
+
+    }
+
+    @Override
+    public void convidarColaborador(IPlaylist playlist, IUsuario usuario) {
+        //verificar possibilidade de retornar um valor para falha( pagina 17) 
+        if(!playlist.getColaboradores().contains(usuario)){
+             playlist.adicionarColaborador(usuario);
+         }
+    }
+
+    @Override
+    public List<IMusica> recomendarMusicasParaPlayList(IPlaylist playlist) {
+        return recomendacaoService.recomendarMusicasParaPlayList(playlist);
+    }
+
+    @Override
+    public void iniciarReproducaoPlayList(IPlaylist playlist, IUsuario usuario, IReproducaoService reproducaoService) {
+        //verificar a importância do artista, nenhum lugar do documento fala isso
+        //reproducaoService.reproduzirPlayList(playlist, usuario, artista);
+    }
 
 }
