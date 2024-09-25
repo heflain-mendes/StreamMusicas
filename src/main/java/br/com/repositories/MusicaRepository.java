@@ -110,7 +110,7 @@ public class MusicaRepository implements IMusicaRepository {
 		}
 
 		if(musicaRecuperada.isEmpty()){
-			throw new Exception("Artista" + musica.getArtista() + "não existe na plataforma");
+			throw new Exception("Artista " + musica.getArtista() + " não existe na plataforma");
 		}
     }
 
