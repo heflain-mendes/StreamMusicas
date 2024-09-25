@@ -4,6 +4,7 @@ import br.com.interfaces.model.IMusica;
 import br.com.interfaces.repository.IMusicaRepository;
 import br.com.model.Musica;
 
+import java.security.interfaces.EdECKey;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -93,14 +94,22 @@ public class MusicaRepository implements IMusicaRepository {
 
     @Override
     public void atualizarEstatisticasReproducao(IMusica musica) throws Exception{
-        var musicaRecuperada = this.musicas
-                .stream()
-                .filter(item -> item.getTitulo().equalsIgnoreCase(musica.getTitulo()))
-                .findFirst();
+		try{
+			var musicaRecuperada = this.musicas
+				.stream()
+				.filter(item -> item.getTitulo().equalsIgnoreCase(musica.getTitulo()))
+				.findFirst();
 
-        if(musicaRecuperada.isPresent()){
-            musicaRecuperada.get().incrementaContagemReproducao();
-        }
+			if(musicaRecuperada.isPresent()) {
+				musicaRecuperada.get().incrementaContagemReproducao();
+			}
+		}catch (Exception ex){
+			throw new Exception("ReproducaoService não está disponível");
+		}
+
+		if(musicas.isEmpty()){
+			throw new Exception("Artista" + musica.getArtista() + "não existe na plataforma");
+		}
     }
 
 	@Override
