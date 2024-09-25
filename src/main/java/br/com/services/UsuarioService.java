@@ -32,7 +32,7 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public List<IUsuario> getColaboradores() {
+    public List<IUsuario> getUsuariosCadastrados() {
         return usuariosCadastrados;
     }
     

@@ -31,7 +31,7 @@ public class PlayListService implements IPlayListService {
             return Optional.empty();
         }
         
-        if( temPermissao( criador ) ) {
+        if( !criador.getPermissaoCriarPlaylists() ) {
             return Optional.empty();
         }
 
@@ -92,12 +92,5 @@ public class PlayListService implements IPlayListService {
         // fala isso. Por enquanto vamos passá-la como 'null'
         reproducaoService.reproduzirPlayList(playlist, usuario, null);
         return 0;
-    }
-
-    private Boolean temPermissao( IUsuario usuario ) {
-        if( !autorizadosParaCriarPlaylist.contains( usuario ) ) {
-            return false;
-        }
-        return true;
     }
 }

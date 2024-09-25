@@ -15,6 +15,6 @@ public interface IUsuarioService {
     
     public void adicionarUsuario(IUsuario iu);
     public void removerUsuario(IUsuario iu);
-    public List<IUsuario> getColaboradores();
+    public List<IUsuario> getUsuariosCadastrados();
     public Boolean possuiCadastro( IUsuario iu );
 }
