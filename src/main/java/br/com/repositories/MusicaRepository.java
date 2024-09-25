@@ -94,8 +94,10 @@ public class MusicaRepository implements IMusicaRepository {
 
     @Override
     public void atualizarEstatisticasReproducao(IMusica musica) throws Exception{
+		Optional<IMusica> musicaRecuperada = Optional.empty();
+
 		try{
-			var musicaRecuperada = this.musicas
+			musicaRecuperada = this.musicas
 				.stream()
 				.filter(item -> item.getTitulo().equalsIgnoreCase(musica.getTitulo()))
 				.findFirst();
@@ -107,7 +109,7 @@ public class MusicaRepository implements IMusicaRepository {
 			throw new Exception("ReproducaoService não está disponível");
 		}
 
-		if(musicas.isEmpty()){
+		if(musicaRecuperada.isEmpty()){
 			throw new Exception("Artista" + musica.getArtista() + "não existe na plataforma");
 		}
     }
