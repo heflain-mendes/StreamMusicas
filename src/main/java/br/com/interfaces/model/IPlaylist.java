@@ -11,5 +11,5 @@ public interface IPlaylist {
     void setPublica(boolean publica);
     void adicionarColaborador(IUsuario usuario);
     List<IUsuario> getColaboradores();
-
+    public IUsuario getCriador();
 }
