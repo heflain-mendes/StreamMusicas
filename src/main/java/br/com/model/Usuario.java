@@ -34,10 +34,12 @@ public class Usuario implements IUsuario {
         this.email = email;
     }
     
+    @Override
     public Boolean getPermissaoReproduzirMusicas() {
         return permissaoReproduzirMusicas;
     }
 
+    @Override
     public Boolean getPermissaoCriarPlaylists() {
         return permissaoCriarPlaylists;
     }
